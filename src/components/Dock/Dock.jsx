@@ -52,8 +52,8 @@ function Dock({ onIconClick }) {
 
       {/* El botón de descarga ahora llama a nuestra nueva función al hacer clic */}
       <a
-        href="/CV-Dietrich-Rojas.pdf"
-        download="CV-Dietrich-Rojas.pdf"
+        href="/CV-AndersonDietrichGarciaChilon.pdf"
+        download="CV-AndersonDietrichGarciaChilon.pdf"
         className="dock-item"
         onClick={handleDownloadCV} // <-- ¡AQUÍ ESTÁ EL CAMBIO PRINCIPAL!
       >

@@ -1,65 +1,76 @@
 // src/components/WelcomeWidget.jsx
+
 import React, { useState, useEffect } from 'react';
 import './WelcomeWidget.css';
-import { useTranslation } from 'react-i18next'; // <-- CORRECTO
+import { useTranslation } from 'react-i18next';
 
-// --- ¡CONFIGURACIÓN IMPORTANTE! ---
-// Mide la duración de tus GIFs (puedes verla en las propiedades del archivo)
-// y pon los valores aquí en milisegundos (1 segundo = 1000 ms).
-const DURATION_FORWARD = 4000; // Ej: 3 segundos para el GIF normal
-const DURATION_REVERSE = 4000; // Ej: 2.5 segundos para el GIF de reversa
+// --- CONFIGURACIÓN DE DURACIONES ---
+const DURATION_FORWARD = 4000;
+const DURATION_REVERSE = 4000;
+const DURATION_TITLE_CHANGE = 3000; // Cada 3 segundos cambiará el título
 
 function WelcomeWidget({ onIconClick }) {
   const { t } = useTranslation();
 
-  // 'isForward' controla qué GIF se está mostrando
+  // --- LÓGICA PARA LA ANIMACIÓN DEL AVATAR (GIF) ---
   const [isForward, setIsForward] = useState(true);
 
   useEffect(() => {
-    // Esta función se encarga de cambiar entre los GIFs
-    const switchAnimation = () => {
-      setIsForward(current => !current); // Invierte el estado (true -> false -> true...)
+    const switchGifAnimation = () => {
+      setIsForward(current => !current);
     };
+    const currentGifDuration = isForward ? DURATION_FORWARD : DURATION_REVERSE;
+    const gifTimer = setTimeout(switchGifAnimation, currentGifDuration);
+    return () => clearTimeout(gifTimer);
+  }, [isForward]);
 
-    // Calcula cuánto tiempo esperar antes de cambiar al siguiente GIF
-    const currentDuration = isForward ? DURATION_FORWARD : DURATION_REVERSE;
+  // --- ¡NUEVA LÓGICA PARA LOS TÍTULOS ROTATIVOS! ---
+  const titles = t('hero.titles', { returnObjects: true });
+  const [titleIndex, setTitleIndex] = useState(0);
 
-    // Creamos un temporizador que llamará a 'switchAnimation' cuando el GIF actual termine
-    const timer = setTimeout(switchAnimation, currentDuration);
-
-    // Función de limpieza: si el componente se desmonta, cancelamos el temporizador
-    return () => clearTimeout(timer);
-
-  }, [isForward]); // Este efecto se ejecuta cada vez que 'isForward' cambia
+  useEffect(() => {
+    const switchTitle = () => {
+      setTitleIndex(prevIndex => (prevIndex + 1) % titles.length);
+    };
+    const titleTimer = setInterval(switchTitle, DURATION_TITLE_CHANGE);
+    return () => clearInterval(titleTimer);
+  }, [titles.length]); // Se reinicia si cambia el idioma y la cantidad de títulos
 
   return (
     <div className="hero-layout">
       
       <div className="hero-left">
+        {/* Tu animación de GIF (sin cambios) */}
         <img
           className="avatar-image"
-          // --- ¡LA MAGIA! ---
-          // El 'src' de la imagen depende del estado 'isForward'
           src={isForward ? "/avatar-forward.gif" : "/avatar-reverse.gif"}
-          
-          // Añadimos una 'key' que cambia con el 'src'. ¡ESTO ES CRUCIAL!
-          // Le dice a React que es una "nueva" imagen, forzando al navegador
-          // a reiniciar la animación del GIF desde el principio.
           key={isForward ? "forward" : "reverse"}
-
           alt="Avatar animado de Dietrich"
         />
         <img
           src={!isForward ? "/avatar-forward.gif" : "/avatar-reverse.gif"}
-          style={{ display: 'none' }} // Lo ocultamos con CSS
-          alt="" // No necesita alt text
+          style={{ display: 'none' }}
+          alt=""
         />
       </div>
       
       <div className="hero-right">
+        {/* <h1 className="hero-title">
+          {t('hero.greeting')} <br />
+          <span className="rotating-title" key={titleIndex}>
+            {titles[titleIndex]}
+          </span>
+        </h1> */}
         <h1 className="hero-title">
           {t('hero.greeting')} <br />
-          <span>{t('hero.title')}</span>
+          {/* Añadimos el atributo 'data-text' */}
+          <span 
+            className="rotating-title" 
+            key={titleIndex}
+            data-text={titles[titleIndex]}
+          >
+            {titles[titleIndex]}
+          </span>
         </h1>
         <p className="hero-description">{t('hero.description')}</p>
         <div className="hero-buttons">

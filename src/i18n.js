@@ -30,7 +30,12 @@ const resources = {
       // Hero Section (WelcomeWidget)
       hero: {
         greeting: "Hola, soy Dietrich.",
-        title: "Desarrollador Full-Stack.",
+        titles: [
+          "Desarrollador Full-Stack.",
+          "Creador de Experiencias Web.",
+          "Apasionado por la Tecnología.",
+          "Solucionador de Problemas."
+        ],
         description: "Transformo ideas en aplicaciones web elegantes, interactivas y eficientes. Bienvenido a mi espacio creativo.",
         buttonProjects: "Mira mis Proyectos",
         buttonContact: "Contáctame",
@@ -277,7 +282,12 @@ const resources = {
       // Hero Section (WelcomeWidget)
       hero: {
         greeting: "Hi, I'm Dietrich.",
-        title: "Full-Stack Developer.",
+        titles: [
+          "Full-Stack Developer.",
+          "Web Experience Creator.",
+          "Technology Enthusiast.",
+          "Problem Solver."
+        ],
         description: "I transform ideas into elegant, interactive, and efficient web applications. Welcome to my creative space.",
         buttonProjects: "View my Projects",
         buttonContact: "Contact Me",
