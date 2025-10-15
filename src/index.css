@@ -6,7 +6,11 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; */
+    /* font-family: "Michroma", sans-serif; */
+    /* font-family: "Contrail One", sans-serif; */
+    /* font-family: "MuseoModerno", sans-serif; */
+    font-family: "Genos", sans-serif;
     height: 100vh;
     overflow: hidden;
     /* background: linear-gradient(135deg, #006ea5 0%, #0575E6 25%, #00f2fe 100%);
@@ -34,6 +38,10 @@ body {
   background: linear-gradient(135deg, #006ea5 0%, #0575E6 25%, #00f2fe 100%);
   background-size: 400% 400%;
   animation: gradientShift 15s ease infinite;
+}
+
+h1, h2, h3, h4, h5, h6, strong, b {
+  font-weight: 400;
 }
 
 @keyframes gradientShift {

@@ -49,8 +49,13 @@ function WelcomeWidget({ onIconClick }) {
 
           alt="Avatar animado de Dietrich"
         />
+        <img
+          src={!isForward ? "/avatar-forward.gif" : "/avatar-reverse.gif"}
+          style={{ display: 'none' }} // Lo ocultamos con CSS
+          alt="" // No necesita alt text
+        />
       </div>
-
+      
       <div className="hero-right">
         <h1 className="hero-title">
           {t('hero.greeting')} <br />

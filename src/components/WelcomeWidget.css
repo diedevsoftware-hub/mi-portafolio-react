@@ -54,17 +54,18 @@
 
 /* 1. Estilo base que se aplica a AMBOS botones */
 .hero-buttons button {
-  padding: 12px 20px; /* Ajustamos padding para que quepa bien el texto */
-  font-size: 15px; /* Ligeramente más pequeño */
+padding: 12px 20px;
+  font-size: 15px;
   font-weight: 500;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
   border: 1px solid transparent;
-  
-  /* --- ¡CORRECCIÓN #2: ANCHO FIJO PARA LOS BOTONES! --- */
-  width: 180px; /* Les damos un ancho fijo a ambos */
+  width: 180px;
   text-align: center;
+  
+  /* --- ¡AÑADE ESTA LÍNEA MÁGICA! --- */
+  font-family: inherit; /* Le dice al botón: "Usa la misma fuente que tu padre" */
 }
 
 .hero-buttons button:hover {
@@ -113,7 +114,7 @@
     width: 250px;
   }
   .hero-layout { gap: 40px; }
-  .avatar-image { width: 220px; }
+  .avatar-image { width: 230px; }
   .hero-title { font-size: 42px; }
 }
 
@@ -128,7 +129,7 @@
     width: 180px;
   }
   .avatar-image {
-    width: 120px;
+    width: 130px;
   }
   .hero-title {
     font-size: 36px;
