@@ -1,0 +1,111 @@
+/* src/components/Header.css */
+
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 30px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.logo {
+  font-size: 24px;
+  color: white;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+/* --- ESTILOS MEJORADOS PARA LA NAVEGACIÓN DERECHA --- */
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Reducimos el gap para que el divisor se vea bien */
+}
+
+/* 1. Un nuevo elemento divisor */
+.nav-divider {
+  width: 1px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.social-nav {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Espacio entre los iconos sociales */
+}
+
+.social-nav a {
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease;
+}
+
+.social-nav a:hover {
+  color: white;
+  transform: translateY(-3px);
+}
+
+/* 2. Estilos mejorados para el selector de idioma (sin fondo) */
+
+.language-switcher {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Espacio entre ES, / y EN */
+  background: none; /* ¡SIN FONDO! */
+  padding: 0;
+}
+
+.language-switcher button {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  font-size: 15px; /* Un poco más grande para mejor legibilidad */
+  font-weight: 600;
+  padding: 5px; /* Un poco de padding para que sea más fácil hacer clic */
+  transition: color 0.3s;
+  border-radius: 4px; /* Un toque redondeado */
+}
+
+.language-switcher button:hover {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1); /* Feedback visual al pasar el ratón */
+}
+
+/* Estilo para el botón del idioma activo */
+.language-switcher button:disabled {
+  color: white;
+  font-weight: 700;
+  cursor: default;
+  background: none; /* Aseguramos que no tenga fondo al estar activo */
+}
+
+.language-switcher span {
+  /* El separador '/' se ve un poco mejor así */
+  color: rgba(255, 255, 255, 0.3);
+  font-weight: 300;
+}
+
+
+/* --- Responsive para móviles --- */
+@media (max-width: 768px) {
+  .main-header {
+    padding: 20px 25px;
+  }
+  .logo {
+    font-size: 20px;
+  }
+  .main-nav {
+    gap: 15px;
+  }
+  .social-nav {
+    gap: 15px;
+  }
+}

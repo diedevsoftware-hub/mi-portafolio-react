@@ -1,0 +1,30 @@
+/* src/App.css */
+
+/* CAPA 2: El contenido de la aplicación */
+.content-layer {
+  position: relative; /* Lo hacemos 'relative' para que respete el flujo normal */
+  z-index: 1; /* ¡LA CLAVE! Lo ponemos por encima de la capa de fondo (z-index: 0) */
+  height: 100%;
+  display: flex;
+  flex-direction: column; /* Para organizar Header, Desktop y Dock */
+}
+
+.desktop {
+  flex-grow: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* --- ¡AQUÍ ESTÁ LA CORRECCIÓN CLAVE! --- */
+  
+  /* Espaciado generoso en todas las direcciones */
+  padding: 30px; 
+  
+  /* Añadimos un padding-bottom mucho más grande para dejar espacio al Dock */
+  /* El valor '120px' es un buen punto de partida, ¡puedes ajustarlo! */
+  padding-bottom: 120px; 
+  
+  /* Aseguramos que el contenido pueda scrollear si es muy alto en pantallas pequeñas */
+  overflow-y: auto; 
+}

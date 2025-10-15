@@ -1,0 +1,139 @@
+/* src/components/WelcomeWidget.css */
+
+.hero-layout {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  color: white;
+  max-width: 1000px;
+  width: 90%;
+  padding: 40px 20px; /* Reducimos padding horizontal para móviles */
+  animation: fadeIn 1.5s ease;
+  transition: all 0.3s ease-in-out;
+}
+
+.hero-left {
+  flex-shrink: 0;
+}
+
+.profile-photo-large {
+  width: 350px;
+  height: auto;
+  object-fit: cover;
+  filter: drop-shadow(0 0 30px rgba(167, 139, 250, 0.3)); 
+  transition: width 0.3s ease-in-out;
+}
+
+.hero-title {
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.hero-title span {
+  background: linear-gradient(90deg, #3b3b3b, #373737);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-description {
+  font-size: 18px;
+  max-width: 500px;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.7;
+  margin-bottom: 30px; /* Un poco más de espacio antes de los botones */
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+}
+
+/* --- ESTILOS DE BOTONES CORREGIDOS --- */
+
+/* 1. Estilo base que se aplica a AMBOS botones */
+.hero-buttons button {
+  padding: 12px 20px; /* Ajustamos padding para que quepa bien el texto */
+  font-size: 15px; /* Ligeramente más pequeño */
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  
+  /* --- ¡CORRECCIÓN #2: ANCHO FIJO PARA LOS BOTONES! --- */
+  width: 180px; /* Les damos un ancho fijo a ambos */
+  text-align: center;
+}
+
+.hero-buttons button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* 2. Estilo específico para el botón PRIMARIO (cristal) */
+.hero-buttons button.primary {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.hero-buttons button.primary:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* 3. Estilo específico para el botón SECUNDARIO (delineado) */
+.hero-buttons button.secondary {
+  background-color: transparent;
+  border-color: rgba(0, 0, 0, 0.5);
+  color: rgb(0, 0, 0);
+}
+
+.hero-buttons button.secondary:hover {
+  background-color: rgba(55, 55, 55, 0.1);
+  border-color: rgba(0, 0, 0, 0.7);
+}
+
+.avatar-image {
+  width: 350px; /* Tamaño grande para impacto */
+  height: auto;
+  object-fit: cover;
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.4));
+  transition: width 0.3s ease-in-out;
+}
+
+/* --- MEDIA QUERIES (SIN CAMBIOS, YA ESTABAN BIEN) --- */
+
+@media (max-width: 1200px) {
+  .profile-photo-large {
+    width: 250px;
+  }
+  .hero-layout { gap: 40px; }
+  .avatar-image { width: 250px; }
+  .hero-title { font-size: 42px; }
+}
+
+@media (max-width: 768px) {
+  .hero-layout {
+    flex-direction: column;
+    text-align: center;
+    /* --- ¡CORRECCIÓN #1: ACERCAR EL AVATAR Y EL TEXTO! --- */
+    gap: 15px; /* Reducimos drásticamente el espacio vertical */
+  }
+  .profile-photo-large {
+    width: 180px;
+  }
+  .avatar-image {
+    width: 180px;
+  }
+  .hero-title {
+    font-size: 36px;
+  }
+  .hero-buttons {
+    justify-content: center;
+  }
+}

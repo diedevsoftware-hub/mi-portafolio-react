@@ -1,0 +1,53 @@
+/* src/assets/CSSBackgroundSkills.css */
+
+.css-skills-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1; /* Lo mandamos detrás de todo */
+  pointer-events: none;
+  overflow: hidden;
+  
+  background: linear-gradient(135deg, #006ea5 0%, #0575E6 25%, #00f2fe 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.skill-icon {
+  position: absolute;
+  user-select: none;
+  pointer-events: none;
+  
+  /* Opacidad y efecto de resplandor blanco */
+  opacity: 0.2;
+  filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+  
+  /* Animación */
+  animation-name: floatSkill;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* 
+  Esta animación mueve un icono desde su posición inicial ('top' definida en el style)
+  hasta salirse por la parte superior de la pantalla.
+  Cuando la animación se repite, el icono es "teletransportado" de nuevo a su posición
+  inicial, creando un bucle infinito y fluido.
+*/
+@keyframes floatSkill {
+  from {
+    transform: translateY(0) rotate(0deg);
+  }
+  to {
+    /* Mueve el icono 110vh hacia arriba desde su posición inicial */
+    transform: translateY(-110vh) rotate(360deg);
+  }
+}
